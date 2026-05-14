@@ -1,0 +1,205 @@
+[
+  {
+    "quality": "BAD — score ~14",
+    "input": {
+      "html": "<html>\n<head>\n  <title>Менің сайтым</title>\n</head>\n<body>\n  <div class=\"header\">\n    <h2>Сайт атауы</h2>\n  </div>\n  <div class=\"content\">\n    <h4>Біз туралы</h4>\n    <img src=\"photo.jpg\">\n    <p style=\"color:red; font-size:14px;\">Мәтін</p>\n  </div>\n  <div class=\"footer\">© 2024</div>\n</body>\n</html>",
+      "css": ""
+    },
+    "chainOfThought": "STEP 1: H1.1-H1.5 + C2.1-C2.5 + UI барлығы қолданылады.\nSTEP 2: DOCTYPE жоқ, lang жоқ, charset жоқ, viewport жоқ. Семантика мүлдем жоқ — толық div суп. h1 жоқ, h2→h4 иерархия бұзылған. img alt жоқ. Inline стиль бар.\nSTEP 3: CSS файлы мүлдем жоқ — 0 балл.\nSTEP 4: UI — иерархия жоқ, spacing хаотичный, контраст inline-арқылы басқарылған, адаптивтілік жоқ, эстетика өте төмен.\nSTEP 5: html=6 + css=0 + ui=8 = total=14.\nSTEP 6: 5 кері байланыс.",
+    "output": {
+      "scores": { "total": 14, "html": 6, "css": 0, "ui": 8 },
+      "grade": "Қанағаттанарлықсыз",
+      "scoreJustifications": {
+        "html": {
+          "summary": "HTML құрылымы өте төмен деңгейде. DOCTYPE, lang, мета-тегтер жоқ. Толық div суп.",
+          "maxScore": 30,
+          "earnedScore": 6,
+          "deductionReasons": [
+            { "rule": "H1.1", "ruleName": "Семантикалық тегтер", "line": "index.html:1-15", "maxPoints": 8, "earnedPoints": 0, "passed": false, "detail": "Семантикалық тегтер мүлдем жоқ. <header>, <main>, <footer>, <section> орнына тек <div> қолданылған.", "codeSnippet": "<div class=\"header\"> ... <div class=\"content\"> ... <div class=\"footer\">" },
+            { "rule": "H1.2", "ruleName": "Қолжетімділік (WCAG 2.1)", "line": "index.html:7,10,11", "maxPoints": 8, "earnedPoints": 1, "passed": false, "detail": "h1 тақырыбы мүлдем жоқ, h2→h4 иерархиясы бұзылған (h3 өткізіп жіберілген). <img> тегінде alt атрибуты жоқ.", "codeSnippet": "<h2>Сайт атауы</h2> → <h4>Біз туралы</h4> (h3 жоқ!); <img src=\"photo.jpg\"> (alt жоқ)" },
+            { "rule": "H1.3", "ruleName": "W3C валидтілік", "line": "index.html:1,12", "maxPoints": 6, "earnedPoints": 2, "passed": false, "detail": "<!DOCTYPE html> декларациясы жоқ — W3C стандартын бұзу. Inline стиль қолданылған.", "codeSnippet": "<html> (DOCTYPE жоқ); <p style=\"color:red; font-size:14px;\"> (inline стиль)" },
+            { "rule": "H1.4", "ruleName": "Мета-тегтер және SEO", "line": "index.html:1-3", "maxPoints": 4, "earnedPoints": 1, "passed": false, "detail": "<title> бар, бірақ <meta charset>, <meta viewport>, <html lang> жоқ.", "codeSnippet": "<html> (lang жоқ); <head> ішінде charset/viewport жоқ" },
+            { "rule": "H1.5", "ruleName": "Код тазалығы", "line": "index.html:1-15", "maxPoints": 4, "earnedPoints": 2, "passed": false, "detail": "Шегіністер сақталған, бірақ комментарийлер жоқ, код өте қысқа.", "codeSnippet": "" }
+          ]
+        },
+        "css": {
+          "summary": "CSS файлы мүлдем жоқ. Барлық стильдер inline жазылған немесе жоқ.",
+          "maxScore": 30,
+          "earnedScore": 0,
+          "deductionReasons": [
+            { "rule": "C2.1", "ruleName": "Layout (Flexbox/Grid)", "line": "-", "maxPoints": 8, "earnedPoints": 0, "passed": false, "detail": "CSS файлы жоқ, сондықтан ешқандай layout технологиясы қолданылмаған.", "codeSnippet": "" },
+            { "rule": "C2.2", "ruleName": "BEM методологиясы", "line": "-", "maxPoints": 8, "earnedPoints": 0, "passed": false, "detail": "CSS файлы жоқ. HTML-дегі класстар (.header, .content, .footer) BEM форматында емес.", "codeSnippet": "class=\"header\", class=\"content\", class=\"footer\" — BEM емес" },
+            { "rule": "C2.3", "ruleName": "CSS өзгермелілері", "line": "-", "maxPoints": 6, "earnedPoints": 0, "passed": false, "detail": ":root CSS-переменные жоқ. Стильдер inline жазылған.", "codeSnippet": "style=\"color:red; font-size:14px;\" — inline стиль" },
+            { "rule": "C2.4", "ruleName": "Медиа-запростар", "line": "-", "maxPoints": 4, "earnedPoints": 0, "passed": false, "detail": "CSS файлы жоқ, медиа-запростар мүлдем жоқ.", "codeSnippet": "" },
+            { "rule": "C2.5", "ruleName": "Код ұйымдастырылуы", "line": "-", "maxPoints": 4, "earnedPoints": 0, "passed": false, "detail": "CSS файлы мүлдем жоқ.", "codeSnippet": "" }
+          ]
+        },
+        "ui": {
+          "summary": "Интерфейс өте қарапайым, стильдер жоқ, визуалды иерархия бұзылған.",
+          "maxScore": 40,
+          "earnedScore": 8,
+          "assessmentBreakdown": [
+            { "criterion": "Визуалды иерархия және типографика", "maxPoints": 10, "earnedPoints": 2, "detail": "h1 жоқ, h2→h4 секіру — иерархия толық бұзылған. Браузердің әдепкі стильдері ғана қолданылған.", "codeSnippet": "<h2>Сайт атауы</h2> → <h4>Біз туралы</h4>" },
+            { "criterion": "Бос орындар ырғағы", "maxPoints": 8, "earnedPoints": 2, "detail": "Margin/padding мүлдем анықталмаған. Элементтер бір-біріне жабысып тұр.", "codeSnippet": "" },
+            { "criterion": "Түс контрасты (WCAG 2.1)", "maxPoints": 8, "earnedPoints": 1, "detail": "Inline color:red — WCAG контраст талабы тексерілмеген, ақ фонда қызыл мәтін.", "codeSnippet": "<p style=\"color:red;\">Мәтін</p>" },
+            { "criterion": "Адаптивтілік", "maxPoints": 8, "earnedPoints": 1, "detail": "Viewport мета-тегі жоқ, медиа-запростар жоқ — мобильді құрылғыларда қолдану мүмкін емес.", "codeSnippet": "" },
+            { "criterion": "Жалпы эстетика", "maxPoints": 6, "earnedPoints": 2, "detail": "Интерфейс өте қарапайым, стилизация мүлдем жоқ. Визуалды шуылдық жоқ, бірақ көзге ұнамсыз.", "codeSnippet": "" }
+          ]
+        }
+      },
+      "learningPathRecommendations": [
+        { "priority": 1, "topic": "HTML5 семантика негіздері", "importance": "VERY HIGH", "reason": "Семантикалық тегтерді (<header>, <main>, <footer>) дұрыс қолдану — W3C стандартының негізі.", "estimatedTime": "2-3 сағат", "practiceTask": "Берілген дизайн бойынша семантикалық HTML құрылымын жазу (div қолданбай)" },
+        { "priority": 2, "topic": "CSS негіздері және BEM", "importance": "VERY HIGH", "reason": "Сыртқы CSS файлы жоқ — inline стильдер кәсіби стандартқа сай емес.", "estimatedTime": "3-4 сағат", "practiceTask": "Бөлек style.css файлында BEM методологиясымен 3 компонент стилизациялау" },
+        { "priority": 3, "topic": "WCAG 2.1 қолжетімділік", "importance": "HIGH", "reason": "img alt жоқ, иерархия бұзылған — WCAG AA стандартын бұзу.", "estimatedTime": "1-2 сағат", "practiceTask": "Барлық img тегтеріне мағыналы alt жазу" }
+      ],
+      "nextAttemptSuggestion": {
+        "focus": "HTML құрылымын толық қайта жазу",
+        "expectedImprovementPoints": 40,
+        "changes": ["<!DOCTYPE html> қосу", "Семантикалық тегтерді қолдану", "CSS файлын бөлек жасау", "img alt қосу", "Inline стильдерді жою"]
+      },
+      "feedback": [
+        { "category": "HTML", "location": "index.html, 1-жол", "line": "index.html:1", "issue": "<!DOCTYPE html> декларациясы жоқ — браузер құжатты quirks mode-де өңдейді.", "howToFix": "Файлдың бірінші жолына қосыңыз:\n<!DOCTYPE html>", "codeSnippet": "<html>", "studyMaterials": ["MDN: DOCTYPE declaration"] },
+        { "category": "HTML", "location": "index.html, 6-жол", "line": "index.html:6", "issue": "<div class=\"header\"> — семантикалық <header> тегі қолданылмаған.", "howToFix": "<div class=\"header\"> орнына <header> қолданыңыз.", "codeSnippet": "<div class=\"header\">", "studyMaterials": ["W3C HTML5: Semantic elements"] },
+        { "category": "HTML", "location": "index.html, 11-жол", "line": "index.html:11", "issue": "<img> тегінде alt атрибуты жоқ — WCAG 2.1 Level A бұзылған.", "howToFix": "<img src=\"photo.jpg\" alt=\"Фото сипаттамасы\">", "codeSnippet": "<img src=\"photo.jpg\">", "studyMaterials": ["WCAG 2.1: Non-text Content 1.1.1"] },
+        { "category": "CSS", "location": "index.html, 12-жол", "line": "index.html:12", "issue": "Inline стиль — кәсіби стандартқа сай емес. CSS файлында жазу керек.", "howToFix": "style атрибутын жойып, сыртқы CSS файлында жазыңыз:\n.content__text { color: red; font-size: 14px; }", "codeSnippet": "<p style=\"color:red; font-size:14px;\">", "studyMaterials": ["CSS-Tricks: Why Inline Styles Are Bad"] },
+        { "category": "UI", "location": "index.html, 7,10-жол", "line": "index.html:7,10", "issue": "Тақырып иерархиясы бұзылған — h2-ден h4-ке секіру, h3 жоқ.", "howToFix": "h2 → h3 → h4 ретпен қолданыңыз.", "codeSnippet": "<h2>Сайт атауы</h2> → <h4>Біз туралы</h4>", "studyMaterials": ["MDN: Heading elements hierarchy"] }
+      ]
+    }
+  },
+  {
+    "quality": "MEDIUM — score ~62",
+    "input": {
+      "html": "<!DOCTYPE html>\n<html lang=\"kk\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>JumysTap — Жұмыс табу платформасы</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"header\">\n    <h1>JumysTap</h1>\n    <div class=\"nav\">\n      <a href=\"#\">Басты</a>\n      <a href=\"#\">Вакансиялар</a>\n    </div>\n  </div>\n  <div class=\"main\">\n    <h2>Жұмыс іздеу</h2>\n    <div class=\"cards\">\n      <div class=\"card\">\n        <img src=\"img/company1.png\">\n        <h3>Компания аты</h3>\n        <p>Сипаттама</p>\n      </div>\n    </div>\n  </div>\n  <div class=\"footer\">© 2024</div>\n</body>\n</html>",
+      "css": ".header { display: flex; justify-content: space-between; padding: 20px; background: #333; color: white; }\n.nav a { color: white; text-decoration: none; margin: 0 10px; }\n.main { padding: 40px 20px; }\nh2 { font-size: 28px; margin-bottom: 20px; }\n.cards { display: flex; gap: 16px; flex-wrap: wrap; }\n.card { border: 1px solid #ddd; padding: 16px; width: 280px; }\n.card img { width: 100%; height: 160px; object-fit: cover; }\n.footer { text-align: center; padding: 20px; background: #333; color: white; }"
+    },
+    "chainOfThought": "STEP 1: H1.1-H1.5, C2.1-C2.5, UI pillars all applicable.\nSTEP 2: DOCTYPE ✓, lang ✓, charset ✓. BUT: viewport missing, no <meta description>. h1 ✓ but nav uses <div class='nav'> not <nav>, header uses <div class='header'> not <header>, main uses <div class='main'> not <main>. img has no alt. Semantic score: 3/8 (only h1 and basic structure).\nSTEP 3: Flexbox used ✓. No CSS variables, no :root, no media queries, no BEM (uses .header, .nav, .card — not BEM). font-size in px.\nSTEP 4: Basic visual hierarchy (h1, h2 ✓). Spacing exists but inconsistent. No responsive design. Contrast okay (white on #333).\nSTEP 5: html=18 + css=15 + ui=22 = total=55.\nSTEP 6: 6 feedback items.",
+    "output": {
+      "scores": { "total": 55, "html": 18, "css": 15, "ui": 22 },
+      "grade": "Қанағаттанарлық",
+      "scoreJustifications": {
+        "html": {
+          "summary": "HTML частично структурирован: DOCTYPE и charset есть, h1 правильный, но семантические теги не используются — весь контент в div-обёртках.",
+          "scoringRationale": "HTML scored 18 out of 30. DOCTYPE, charset, lang are present (good). However, the viewport meta tag is missing at line 3, which means the page will not render correctly on mobile devices. The navigation is implemented as <div class='nav'> at line 11 instead of <nav>, the header is <div class='header'> at line 9 instead of <header>, and the main content area is <div class='main'> at line 14 instead of <main> — all three are W3C semantic HTML5 violations. The img tag at line 22 has no alt attribute, violating WCAG 2.1 Level A (Success Criterion 1.1.1).",
+          "maxScore": 30,
+          "earnedScore": 18,
+          "deductionReasons": [
+            { "rule": "H1.1", "ruleName": "Semantic HTML Tags", "line": "index.html:9,11,14", "maxPoints": 8, "earnedPoints": 3, "passed": false, "detail": "The page uses <div class='header'>, <div class='nav'>, <div class='main'>, <div class='footer'> instead of HTML5 semantic elements. This violates the W3C HTML5 specification which defines <header>, <nav>, <main>, <footer> for meaningful document structure. Screen readers and search engines cannot correctly interpret the page hierarchy.", "codeSnippet": "<div class=\"header\">\n<div class=\"nav\">\n<div class=\"main\">" },
+            { "rule": "H1.2", "ruleName": "WCAG Accessibility", "line": "index.html:22", "maxPoints": 8, "earnedPoints": 4, "passed": false, "detail": "The <img> tag at line 22 is missing the alt attribute entirely. This is a WCAG 2.1 Level A violation (Success Criterion 1.1.1 Non-text Content). Screen reader users and users with slow connections will receive no information about this image.", "codeSnippet": "<img src=\"img/company1.png\">" },
+            { "rule": "H1.3", "ruleName": "W3C Validity", "line": "index.html:3", "maxPoints": 6, "earnedPoints": 5, "passed": false, "detail": "The <meta name='viewport'> tag is missing from the head. Without viewport meta, mobile browsers render the page at desktop width and then scale it down, breaking the layout on small screens. This is a fundamental mobile-web requirement.", "codeSnippet": "<head> (viewport meta missing)" },
+            { "rule": "H1.4", "ruleName": "Meta Tags and SEO", "line": "index.html:5", "maxPoints": 4, "earnedPoints": 2, "passed": false, "detail": "<title> is present but <meta name='description'> is absent. The description meta tag is used by Google to generate search result snippets and is essential for SEO. Without it, search engines generate arbitrary snippets from page content.", "codeSnippet": "<title>JumysTap — Жұмыс табу платформасы</title> (description missing)" },
+            { "rule": "H1.5", "ruleName": "Code Readability", "line": "index.html:1-30", "maxPoints": 4, "earnedPoints": 4, "passed": true, "detail": "Indentation is consistent throughout the file. Code is readable with logical grouping. No inline styles are used.", "codeSnippet": "" }
+          ]
+        },
+        "css": {
+          "summary": "CSS has basic Flexbox layout but lacks CSS variables, BEM methodology, and responsive media queries.",
+          "scoringRationale": "CSS scored 15 out of 30. Flexbox is correctly used in .header and .cards (Layout: 5/8). However, BEM methodology is completely absent — class names are generic (.header, .nav, .card) instead of block__element--modifier format (BEM: 2/8). No CSS variables or :root block are defined — all colors (#333) and sizes (280px, 160px, 20px) are hardcoded magic numbers (CSS Variables: 0/6). No media queries are present, meaning the layout breaks on screens smaller than ~900px (Media Queries: 0/4). Code organization is flat without sections (Readability: 3/4).",
+          "maxScore": 30,
+          "earnedScore": 15,
+          "deductionReasons": [
+            { "rule": "C2.1", "ruleName": "Modern Layout (Flexbox/Grid)", "line": "style.css:1,6", "maxPoints": 8, "earnedPoints": 5, "passed": false, "detail": "Flexbox is used in .header and .cards, which is good. However, CSS Grid is not used anywhere, and the .card has a fixed width of 280px which breaks on small screens. Best practice is to use minmax() or percentage-based widths with Flexbox.", "codeSnippet": ".card { border: 1px solid #ddd; padding: 16px; width: 280px; }" },
+            { "rule": "C2.2", "ruleName": "BEM Methodology", "line": "style.css:1-8", "maxPoints": 8, "earnedPoints": 2, "passed": false, "detail": "No BEM naming convention is used. Classes like .header, .nav, .card, .footer are generic names with no block__element--modifier structure. This makes CSS hard to scale and maintain in larger projects, as per BEM documentation.", "codeSnippet": ".header { } .nav { } .cards { } .card { } .footer { }" },
+            { "rule": "C2.3", "ruleName": "CSS Variables", "line": "style.css:1-8", "maxPoints": 6, "earnedPoints": 0, "passed": false, "detail": "No :root block or CSS custom properties are defined. Colors (#333) are hardcoded in multiple places. If the brand color changes, each occurrence must be updated manually. CSS variables would centralize design tokens.", "codeSnippet": "background: #333; (hardcoded in .header AND .footer)" },
+            { "rule": "C2.4", "ruleName": "Media Queries", "line": "-", "maxPoints": 4, "earnedPoints": 0, "passed": false, "detail": "No @media rules are present in the stylesheet. The .card has a fixed 280px width and the layout will not adapt for screens under 700px wide. This is a critical failure for mobile-first web development.", "codeSnippet": "" },
+            { "rule": "C2.5", "ruleName": "Code Organization", "line": "style.css:1-8", "maxPoints": 4, "earnedPoints": 3, "passed": false, "detail": "Code is flat without section comments or logical grouping. However, no duplicate selectors were found and no !important is used, which is positive.", "codeSnippet": "" }
+          ]
+        },
+        "ui": {
+          "summary": "Basic visual identity exists but the layout is not responsive and spacing is inconsistent.",
+          "scoringRationale": "UI/UX scored 22 out of 40. Visual hierarchy is partially correct: h1, h2, h3 create a basic hierarchy, and the dark header provides contrast (Hierarchy: 6/10). Spacing exists but is inconsistent — header uses 20px padding while main uses 40px 20px with no design system (Spacing: 4/8). Color contrast of white text on #333 background is approximately 10:1 which passes WCAG AA (Contrast: 6/8). Responsiveness fails completely — no media queries, fixed widths, cards overflow on mobile (Responsiveness: 2/8). Aesthetics are minimal but functional — no hover effects, no transitions (Aesthetics: 4/6).",
+          "maxScore": 40,
+          "earnedScore": 22,
+          "assessmentBreakdown": [
+            { "criterion": "Visual Hierarchy and Typography", "maxPoints": 10, "earnedPoints": 6, "detail": "h1 → h2 → h3 hierarchy is structurally correct and creates readable content flow. However, font sizes are defined in px (28px for h2) instead of rem, which ignores user browser font size preferences as per WCAG 1.4.4.", "codeSnippet": "h2 { font-size: 28px; }" },
+            { "criterion": "Spacing Rhythm", "maxPoints": 8, "earnedPoints": 4, "detail": "Padding values (20px, 40px, 16px) are not based on a consistent scale or CSS variable system. Each component has arbitrary spacing values which creates visual rhythm inconsistency. No margin/padding utility system exists.", "codeSnippet": ".header { padding: 20px; } .main { padding: 40px 20px; } .card { padding: 16px; }" },
+            { "criterion": "Color Contrast (WCAG 2.1)", "maxPoints": 8, "earnedPoints": 6, "detail": "White text on #333 background achieves approximately 10:1 contrast ratio, exceeding WCAG AA (4.5:1) and approaching AAA (7:1). This is good. However, the card body text on white background has no explicit color set, relying on browser defaults.", "codeSnippet": ".header { background: #333; color: white; }" },
+            { "criterion": "Responsiveness", "maxPoints": 8, "earnedPoints": 2, "detail": "No media queries are present. The .card has a fixed width of 280px which causes horizontal overflow on screens under 640px. The flex-wrap: wrap in .cards partially helps but without breakpoints the layout is broken on mobile.", "codeSnippet": ".card { width: 280px; } /* no @media queries anywhere */" },
+            { "criterion": "Aesthetics and Polish", "maxPoints": 6, "earnedPoints": 4, "detail": "The design is minimal and functional. No hover effects, no transitions, no animations. The nav links have no visual feedback on hover which reduces interactivity. Basic dark header/footer provides visual framing.", "codeSnippet": ".nav a { color: white; text-decoration: none; } /* no :hover */" }
+          ]
+        }
+      },
+      "learningPathRecommendations": [
+        { "priority": 1, "topic": "Семантикалық HTML5 тегтер", "importance": "VERY HIGH", "reason": "<div> орнына <header>, <nav>, <main>, <footer> қолданыңыз", "estimatedTime": "2 сағат", "practiceTask": "Сайттың барлық div-тарын семантикалық тегтермен ауыстыру" },
+        { "priority": 2, "topic": "CSS өзгермелілері және :root", "importance": "HIGH", "reason": "Қатты кодталған #333 сияқты мәндерді CSS айнымалыларына ауыстырыңыз", "estimatedTime": "1 сағат", "practiceTask": ":root { --color-dark: #333; } декларациясын жасап, барлық жерде қолдану" },
+        { "priority": 3, "topic": "Медиа-запростар", "importance": "HIGH", "reason": "Мобильді экрандар үшін @media (max-width: 768px) қосыңыз", "estimatedTime": "2 сағат", "practiceTask": "Телефон экраны үшін бір колонкалы .cards жасау" }
+      ],
+      "nextAttemptSuggestion": {
+        "focus": "Семантика және адаптивтілік",
+        "expectedImprovementPoints": 20,
+        "changes": ["<div> тегтерін семантикалық тегтермен ауыстыру", "Медиа-запростар қосу", "CSS өзгермелілерін пайдалану", "img alt атрибутын қосу"]
+      },
+      "feedback": [
+        { "category": "HTML", "location": "index.html, 9-жол", "line": "index.html:9", "issue": "<div class='header'> пайдаланылған — семантикалық <header> тегі жоқ. Бұл W3C HTML5 стандартын бұзады.", "howToFix": "<header class='header'> деп ауыстырыңыз.", "codeSnippet": "<div class=\"header\">", "studyMaterials": ["MDN: The HTML Header element"] },
+        { "category": "HTML", "location": "index.html, 11-жол", "line": "index.html:11", "issue": "<div class='nav'> навигация үшін қолданылған — <nav> тегі жоқ.", "howToFix": "<nav class='nav'> деп ауыстырыңыз.", "codeSnippet": "<div class=\"nav\">", "studyMaterials": ["MDN: The HTML Navigation element"] },
+        { "category": "HTML", "location": "index.html, 22-жол", "line": "index.html:22", "issue": "<img> тегінде alt атрибуты жоқ — WCAG 2.1 Level A талабы бұзылған.", "howToFix": "<img src='img/company1.png' alt='Компания логотипі'>", "codeSnippet": "<img src=\"img/company1.png\">", "studyMaterials": ["WCAG 2.1: 1.1.1 Non-text Content"] },
+        { "category": "CSS", "location": "style.css, 1-8-жол", "line": "style.css:1-8", "issue": "CSS өзгермелілері мүлдем жоқ — #333 түсі екі жерде қайталанады.", "howToFix": ":root { --color-dark: #333; }\n.header { background: var(--color-dark); }\n.footer { background: var(--color-dark); }", "codeSnippet": "background: #333; (2 жерде)", "studyMaterials": ["MDN: Using CSS custom properties"] },
+        { "category": "CSS", "location": "style.css (бүкіл файл)", "line": "style.css:1", "issue": "Медиа-запростар мүлдем жоқ. .card тіркелген 280px кеңдігі бар — мобильді экрандарда бұзылады.", "howToFix": "@media (max-width: 768px) {\n  .cards { flex-direction: column; }\n  .card { width: 100%; }\n}", "codeSnippet": ".card { width: 280px; }", "studyMaterials": ["MDN: Using media queries"] },
+        { "category": "CSS", "location": "style.css (бүкіл файл)", "line": "style.css:1", "issue": "BEM методологиясы қолданылмаған. .header, .card сияқты атаулар block__element--modifier форматында емес.", "howToFix": ".card → .vacancy-card\n.card img → .vacancy-card__image\n.card h3 → .vacancy-card__title", "codeSnippet": ".header { } .card { } .footer { }", "studyMaterials": ["BEM: Quick Start Guide"] }
+      ]
+    }
+  },
+  {
+    "quality": "GOOD — score ~90",
+    "input": {
+      "html": "<!DOCTYPE html>\n<html lang=\"kk\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Портфолио | Асем Нұрланова</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <header class=\"header\">\n    <nav class=\"nav\" aria-label=\"Негізгі навигация\">\n      <ul class=\"nav__list\">\n        <li class=\"nav__item\"><a class=\"nav__link\" href=\"#about\">Біз туралы</a></li>\n      </ul>\n    </nav>\n  </header>\n  <main class=\"main\">\n    <section class=\"hero\" id=\"about\">\n      <h1 class=\"hero__title\">Сәлеметсіз бе!</h1>\n      <img class=\"hero__image\" src=\"photo.webp\" alt=\"Асем Нұрланованың фотосы\" width=\"400\" height=\"400\" loading=\"lazy\">\n    </section>\n  </main>\n  <footer class=\"footer\">\n    <p class=\"footer__copy\">&copy; 2024 Асем Нұрланова</p>\n  </footer>\n</body>\n</html>",
+      "css": ":root {\n  --color-primary: #2563eb;\n  --color-text: #1f2937;\n  --spacing-sm: 8px;\n  --spacing-md: 16px;\n  --spacing-lg: 32px;\n}\n\n* { margin: 0; padding: 0; box-sizing: border-box; }\n\nbody { font-family: 'Inter', sans-serif; color: var(--color-text); }\n\n.header { padding: var(--spacing-md) var(--spacing-lg); }\n.nav__list { display: flex; list-style: none; gap: var(--spacing-md); }\n.nav__link { color: var(--color-primary); text-decoration: none; }\n.nav__link:hover { text-decoration: underline; }\n\n.hero { text-align: center; padding: var(--spacing-lg) 0; }\n.hero__title { font-size: 2.5rem; margin-bottom: var(--spacing-md); }\n.hero__image { border-radius: 50%; max-width: 100%; height: auto; }\n\n.footer { text-align: center; padding: var(--spacing-md); background: #f3f4f6; }\n\n@media (max-width: 768px) {\n  .hero__title { font-size: 1.8rem; }\n  .nav__list { flex-direction: column; }\n}\n\n@media (max-width: 480px) {\n  .header { padding: var(--spacing-sm); }\n}\n"
+    },
+    "chainOfThought": "STEP 1: Барлық ережелер қолданылады.\nSTEP 2: HTML — DOCTYPE ✓, lang ✓, charset ✓, viewport ✓, title ✓. Семантика: header, nav, main, section, footer ✓. h1 ✓, alt ✓, aria-label ✓. Бірақ <meta description> жоқ → H1.4 -1. Код таза → H1.5 ✓. HTML=28.\nSTEP 3: CSS — Flexbox ✓, Grid жоқ бірақ қажет емес. BEM таза ✓. :root variables ✓. 2 медиа-запрос ✓. Код ұйымдасқан. Бірақ font-size px-пен 0 жер (rem ✓). CSS=27.\nSTEP 4: UI — Иерархия жақсы (9/10), spacing rhythm ✓ (7/8), контраст жақсы (7/8), адаптивтілік 2 breakpoint (7/8), эстетика таза (5/6). UI=35.\nSTEP 5: 28+27+35=90.\nSTEP 6: 3 кері байланыс.",
+    "output": {
+      "scores": { "total": 90, "html": 28, "css": 27, "ui": 35 },
+      "grade": "Өте жақсы",
+      "scoreJustifications": {
+        "html": {
+          "summary": "HTML құрылымы өте жоғары деңгейде. Семантика, қолжетімділік, BEM дұрыс қолданылған.",
+          "maxScore": 30,
+          "earnedScore": 28,
+          "deductionReasons": [
+            { "rule": "H1.1", "ruleName": "Семантикалық тегтер", "line": "index.html:10-24", "maxPoints": 8, "earnedPoints": 8, "passed": true, "detail": "header, nav, main, section, footer — барлық семантикалық тегтер дұрыс қолданылған.", "codeSnippet": "<header>, <nav>, <main>, <section>, <footer>" },
+            { "rule": "H1.2", "ruleName": "Қолжетімділік", "line": "index.html:11,19,20", "maxPoints": 8, "earnedPoints": 8, "passed": true, "detail": "h1 иерархиясы сақталған, img alt мағыналы, aria-label бар.", "codeSnippet": "<nav aria-label=\"Негізгі навигация\">; <img alt=\"Асем Нұрланованың фотосы\">" },
+            { "rule": "H1.3", "ruleName": "W3C валидтілік", "line": "index.html:1-7", "maxPoints": 6, "earnedPoints": 6, "passed": true, "detail": "DOCTYPE, charset, viewport барлығы бар. Inline стильдер жоқ. Тегтер дұрыс жабылған.", "codeSnippet": "<!DOCTYPE html>, <meta charset=\"UTF-8\">, <meta name=\"viewport\">" },
+            { "rule": "H1.4", "ruleName": "Мета-тегтер және SEO", "line": "index.html:3-6", "maxPoints": 4, "earnedPoints": 3, "passed": false, "detail": "charset, viewport, title бар. Бірақ <meta name=\"description\"> жоқ — SEO үшін маңызды.", "codeSnippet": "<head> ішінде description жоқ" },
+            { "rule": "H1.5", "ruleName": "Код тазалығы", "line": "index.html:1-26", "maxPoints": 4, "earnedPoints": 3, "passed": false, "detail": "Код таза, шегіністер сақталған. Бірақ HTML комментарийлері жоқ.", "codeSnippet": "" }
+          ]
+        },
+        "css": {
+          "summary": "CSS сапасы жоғары. BEM, CSS-переменные, медиа-запростар дұрыс қолданылған.",
+          "maxScore": 30,
+          "earnedScore": 27,
+          "deductionReasons": [
+            { "rule": "C2.1", "ruleName": "Layout (Flexbox/Grid)", "line": "style.css:14", "maxPoints": 8, "earnedPoints": 7, "passed": true, "detail": "Flexbox дұрыс қолданылған (nav__list). Grid қолданылмаған, бірақ бұл жобада қажет емес.", "codeSnippet": ".nav__list { display: flex; list-style: none; gap: var(--spacing-md); }" },
+            { "rule": "C2.2", "ruleName": "BEM методологиясы", "line": "style.css:13-21", "maxPoints": 8, "earnedPoints": 8, "passed": true, "detail": "BEM таза қолданылған: .nav__list, .nav__link, .hero__title, .hero__image, .footer__copy.", "codeSnippet": ".nav__list, .nav__link, .hero__title, .hero__image, .footer__copy" },
+            { "rule": "C2.3", "ruleName": "CSS өзгермелілері", "line": "style.css:1-7", "maxPoints": 6, "earnedPoints": 6, "passed": true, "detail": ":root арқылы 5 CSS-переменные анықталған. Түстер мен spacing бір жерден басқарылады.", "codeSnippet": ":root { --color-primary: #2563eb; --spacing-sm: 8px; ... }" },
+            { "rule": "C2.4", "ruleName": "Медиа-запростар", "line": "style.css:23-29", "maxPoints": 4, "earnedPoints": 3, "passed": false, "detail": "2 медиа-запрос бар (768px, 480px). Бірақ 1024px breakpoint жоқ — планшет өлшемі ескерілмеген.", "codeSnippet": "@media (max-width: 768px) { ... } @media (max-width: 480px) { ... }" },
+            { "rule": "C2.5", "ruleName": "Код ұйымдастырылуы", "line": "style.css:1-29", "maxPoints": 4, "earnedPoints": 3, "passed": false, "detail": "Құрылым логикалық: reset → variables → components. Бірақ utilities секциясы жоқ.", "codeSnippet": "/* reset → :root → components → @media */" }
+          ]
+        },
+        "ui": {
+          "summary": "UI/UX жоғары сапалы. Визуалды иерархия, spacing, контраст — барлығы жақсы.",
+          "maxScore": 40,
+          "earnedScore": 35,
+          "assessmentBreakdown": [
+            { "criterion": "Визуалды иерархия және типографика", "maxPoints": 10, "earnedPoints": 9, "detail": "h1 2.5rem — нақты иерархия бар. Inter шрифті — заманауи типографика.", "codeSnippet": ".hero__title { font-size: 2.5rem; }" },
+            { "criterion": "Бос орындар ырғағы", "maxPoints": 8, "earnedPoints": 7, "detail": "CSS-переменные арқылы spacing ырғағы сақталған (8px, 16px, 32px).", "codeSnippet": "--spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 32px;" },
+            { "criterion": "Түс контрасты (WCAG 2.1)", "maxPoints": 8, "earnedPoints": 7, "detail": "#2563eb on white = контраст ~4.6:1 — WCAG AA сай, бірақ AAA-ға жетпейді.", "codeSnippet": "--color-primary: #2563eb; --color-text: #1f2937;" },
+            { "criterion": "Адаптивтілік", "maxPoints": 8, "earnedPoints": 7, "detail": "2 breakpoint бар (768px, 480px), hero__title мен nav бейімделген. 1024px жоқ.", "codeSnippet": "@media (max-width: 768px) { .hero__title { font-size: 1.8rem; } }" },
+            { "criterion": "Жалпы эстетика", "maxPoints": 6, "earnedPoints": 5, "detail": "Интерфейс таза, визуалды шу жоқ. Бірақ hover эффектілері тек underline — анимация жоқ.", "codeSnippet": ".nav__link:hover { text-decoration: underline; }" }
+          ]
+        }
+      },
+      "learningPathRecommendations": [
+        { "priority": 1, "topic": "SEO мета-тегтер", "importance": "MEDIUM", "reason": "<meta name=\"description\"> қосу SEO үшін маңызды.", "estimatedTime": "30 минут", "practiceTask": "Барлық беттерге description мета-тегін қосу" },
+        { "priority": 2, "topic": "CSS анимациялар", "importance": "MEDIUM", "reason": "Hover эффектілері transition арқылы жақсартылуы мүмкін.", "estimatedTime": "1 сағат", "practiceTask": "nav__link hover-ге transition: color 0.2s ease қосу" },
+        { "priority": 3, "topic": "Планшет breakpoint", "importance": "MEDIUM", "reason": "1024px breakpoint қосу планшет қолданушыларына ыңғайлылық береді.", "estimatedTime": "30 минут", "practiceTask": "@media (max-width: 1024px) breakpoint қосу" }
+      ],
+      "nextAttemptSuggestion": {
+        "focus": "SEO және анимациялар",
+        "expectedImprovementPoints": 5,
+        "changes": ["<meta name=\"description\"> қосу", "CSS transition анимациялары қосу", "1024px breakpoint қосу"]
+      },
+      "feedback": [
+        { "category": "HTML", "location": "index.html, 3-6-жол", "line": "index.html:3-6", "issue": "<meta name=\"description\"> жоқ — бұл Google SEO рейтингіне әсер етеді.", "howToFix": "<head> ішіне қосыңыз:\n<meta name=\"description\" content=\"Асем Нұрланованың портфолио сайты\">", "codeSnippet": "<head> ішінде description жоқ", "studyMaterials": ["MDN: Meta description", "Google SEO Starter Guide"] },
+        { "category": "CSS", "location": "style.css, 15-16-жол", "line": "style.css:15-16", "issue": "Hover эффектісі тек text-decoration: underline — визуалды кері байланыс әлсіз.", "howToFix": ".nav__link { transition: color 0.2s ease; }\n.nav__link:hover { color: var(--color-primary); opacity: 0.8; }", "codeSnippet": ".nav__link:hover { text-decoration: underline; }", "studyMaterials": ["CSS-Tricks: transition property"] },
+        { "category": "CSS", "location": "style.css, 23-29-жол", "line": "style.css:23-29", "issue": "Планшет (1024px) breakpoint жоқ — tablet қолданушыларына ыңғайсыз болуы мүмкін.", "howToFix": "@media (max-width: 1024px) {\n  .hero { padding: 24px 16px; }\n}", "codeSnippet": "/* 1024px breakpoint жоқ */", "studyMaterials": ["Responsive Design: Breakpoints best practices"] }
+      ]
+    }
+  }
+]

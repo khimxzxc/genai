@@ -1,0 +1,62 @@
+[
+  {
+    "id": "C2.1",
+    "subcriterion": "Заманауи Layout (Flexbox / Grid)",
+    "rule": "Modern layout methods REQUIRED: Flexbox or CSS Grid. float for layout is FORBIDDEN.",
+    "maxPoints": 8,
+    "keyword": "flex",
+    "levels": {
+      "high": "7–8: Макет толық Flexbox/Grid технологиясымен құрылған. Float мүлдем жоқ.",
+      "mid": "4–6: Flexbox бар, бірақ кейбір жерлерде margin немесе float қолданылған.",
+      "low": "0–3: Макет ескірген float немесе position: absolute арқылы құрылған."
+    }
+  },
+  {
+    "id": "C2.2",
+    "subcriterion": "BEM Методологиясы және нейминг",
+    "rule": "BEM naming convention MUST be used: block__element--modifier. Class names must be semantic and meaningful.",
+    "maxPoints": 8,
+    "keyword": "bem",
+    "levels": {
+      "high": "7–8: BEM методологиясы таза қолданылған. Класстардың мағынасы бар.",
+      "mid": "4–6: Класстар атауы түсінікті, бірақ BEM толық сақталмаған.",
+      "low": "0–3: Класстар хаотичный тәртіпте. Тег атауымен стилизация көп."
+    }
+  },
+  {
+    "id": "C2.3",
+    "subcriterion": "CSS Өзгермелілері және DRY принцип",
+    "rule": "CSS custom properties (variables) via :root {} MUST be used for colors and fonts. No duplicate rules (!important forbidden).",
+    "maxPoints": 6,
+    "keyword": "root",
+    "levels": {
+      "high": "5–6: :root арқылы CSS-переменные жинақы жазылған. Дублирование жоқ.",
+      "mid": "3–4: CSS-переменные бар, бірақ толық қолданылмаған. Кейбір жерлерде hex түстер қайталанған.",
+      "low": "0–2: CSS-переменные мүлдем жоқ. Стильдер әр жерде қайталанып жазылған."
+    }
+  },
+  {
+    "id": "C2.4",
+    "subcriterion": "Медиа-запростар және адаптивтілік",
+    "rule": "At least TWO media query breakpoints MUST be present (768px and 1024px). Mobile-first approach is preferred.",
+    "maxPoints": 4,
+    "keyword": "media",
+    "levels": {
+      "high": "4: Mobile-first тәсіл. Барлық экран өлшемдеріне бейімделген. Breakpoint-тер логикалық.",
+      "mid": "2–3: Медиа-запростар бар, бірақ mobile-first емес. Breakpoint-тер хаотичный.",
+      "low": "0–1: Медиа-запростар жоқ немесе жеткіліксіз."
+    }
+  },
+  {
+    "id": "C2.5",
+    "subcriterion": "Кодтың оқылымдылығы және ұйымдастырылуы",
+    "rule": "CSS file must be logically organized: reset → variables → layout → components → utilities.",
+    "maxPoints": 4,
+    "keyword": "organize",
+    "levels": {
+      "high": "4: CSS файлы логикалық құрылымда ұйымдастырылған.",
+      "mid": "2–3: Құрылым бар, бірақ толық сақталмаған.",
+      "low": "0–1: CSS файлы хаотичный, стильдер ретсіз жазылған."
+    }
+  }
+]

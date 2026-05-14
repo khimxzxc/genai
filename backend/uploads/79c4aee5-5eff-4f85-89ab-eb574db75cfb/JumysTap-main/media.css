@@ -1,0 +1,657 @@
+@media only screen and (min-width: 1599px) and (max-width: 1766px) {
+    .footer_container {
+        gap: calc(370px + 60 * ((100vw - 1555px) / 211));
+    }
+    }
+    
+    @media only screen and (min-width: 1558px) and (max-width: 1598px) {
+        .footer_container {
+            gap: calc(330px + 70 * ((100vw - 1598px) / -168));
+        }
+        }
+
+        @media only screen and (min-width: 1400px) and (max-width: 1557px) {
+            .footer_container {
+                gap: calc(290px + 40 * ((100vw - 1517px) / 41));
+            }
+            
+            .submission_title {
+                font-size: 3.5vw;
+            }
+
+            .submission_subtitle {
+                font-size: 1vw;
+            }
+
+            }
+ 
+            @media only screen and (min-width: 1300px) and (max-width: 1399px) {
+                .footer_container {
+                    gap: calc(100px + 20 * ((100vw - 1300px) / 100));
+                }
+
+                .footer_left_icons {
+                    gap: 10px;
+                }
+
+                .submission_title {
+                    font-size: 3.5vw;
+                }
+    
+                .submission_subtitle {
+                    font-size: 1vw;
+                }
+               
+                .submission_right {
+                    padding-right: 40px;
+                }
+                }
+
+                @media only screen and (max-width: 1299px) {
+                    .footer_container {
+                        gap: calc(100px + 20 * ((100vw - 1300px) / 100));
+                    }
+    
+                    .footer_left_icons {
+                        gap: 10px;
+                    }
+    
+                    .submission_title {
+                        font-size: 3.5vw;
+                    }
+        
+                    .submission_subtitle {
+                        font-size: 1vw;
+                    }
+                   
+                    .submission_right {
+                        padding-right: 40px;
+                    }
+                    }
+
+                    @media only screen and (max-width: 1263px) {
+                        .footer_container {
+                            gap: calc(85px + 20 * ((100vw - 1300px) / 100));
+                        }
+                        
+                        .description_container {
+                            padding-left: calc(25px + 45 * ((100vw - 320px) / 943));
+                            padding-right: calc(25px + 45 * ((100vw - 320px) / 943));
+                        }
+                    
+                        }
+
+                        @media only screen and (max-width: 1240px) {
+                            .footer_container {
+                                gap: calc(100px + 20 * ((100vw - 1300px) / 100));
+                            }
+                            
+                            .description_container {
+                                padding-left: calc(15px + 45 * ((100vw - 320px) / 920));
+
+                                padding-right: calc(15px + 45 * ((100vw - 320px) / 920));
+                            }
+                        
+                            .footer_left_link {
+                                font-size: 1vw;
+                            }
+                            }
+
+                            @media only screen and (max-width: 1231px) {
+                                .footer_container {
+                                    gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                }
+                                
+                                .description_container {
+                                    padding-left: calc(10px + 45 * ((100vw - 320px) / 920));
+    
+                                    padding-right: calc(15px + 45 * ((100vw - 320px) / 920));
+                                }
+                            
+                                .footer_left_link {
+                                    font-size: 1vw;
+                                }
+                                }
+
+                                   @media only screen and (max-width: 1214px) {
+                                .footer_container {
+                                    gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                }
+                                
+                                .description_container {
+                                    padding-left: calc(10px + 35 * ((100vw - 320px) / 920));
+    
+                                    padding-right: calc(15px + 45 * ((100vw - 320px) / 920));
+                                }
+                            
+                                .footer_left_link {
+                                    font-size: 1vw;
+                                }
+
+                                .footer_right_text {
+                                    font-size: 1.1vw;
+                                }
+
+                                .container {
+                                    width: calc(100%-80px);
+                                }
+                                }
+
+                                @media only screen and (max-width: 1200px) {
+                                    .footer_container {
+                                        gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                    }
+                                    
+                                    .description_container {
+                                        padding-left: calc(10px + 25 * ((100vw - 320px) / 920));
+        
+                                        padding-right: calc(15px + 45 * ((100vw - 320px) / 920));
+                                    }
+                                
+                                    .footer_left_link {
+                                        font-size: 1vw;
+                                    }
+    
+                                    .footer_right_text {
+                                        font-size: 1.1vw;
+                                    }
+    
+                                    .container {
+                                        width: calc(100%-80px);
+                                    }
+                                    }
+
+                                    @media only screen and (max-width: 1167px) {
+                                        .footer_container {
+                                            gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                        }
+                                        
+                                        .description_container {
+                                            padding-left: calc(10px + 15 * ((100vw - 320px) / 920));
+                                            gap: 5vw;
+                                            padding-right: calc(15px + 45 * ((100vw - 320px) / 920));
+                                        }
+                                    
+                                        .footer_left_link {
+                                            font-size: 1vw;
+                                        }
+        
+                                        .footer_right_text {
+                                            font-size: 1.1vw;
+                                        }
+        
+                                        .container {
+                                            width: calc(100%-80px);
+                                        }
+                                        }
+
+                                        @media only screen and (max-width: 1144px) {
+                                            .footer_container {
+                                                gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                            }
+                                            
+                                            .description_container {
+                                                padding-left: calc(10px + 10 * ((100vw - 320px) / 920));
+                                                gap: 5vw;
+                                                padding-right: calc( 15px + 45 * ((100vw - 320px) / 920));
+                                            }
+                                        
+                                            .footer_left_link {
+                                                font-size: 1vw;
+                                            }
+            
+                                            .footer_right_text {
+                                                font-size: 1.1vw;
+                                            }
+            
+                                            .container {
+                                                width: calc(100%-80px);
+                                            }
+                                            }
+
+                                            
+                                        @media only screen and (max-width: 1133px) {
+                                            .footer_container {
+                                                gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                            }
+                                            
+                                            .description_container {
+                                                padding-left: calc(10px + 10 * ((100vw - 320px) / 920));
+                                                gap: 5vw;
+                                                padding-right: calc( 15px + 45 * ((100vw - 320px) / 920));
+                                            }
+                                        
+                                            .footer_left_link {
+                                                font-size: 1vw;
+                                            }
+            
+                                            .footer_right_text {
+                                                font-size: 1.1vw;
+                                            }
+            
+                                            .container {
+                                                width: calc(100%-80px);
+                                            }
+
+                                            .header_container {
+                                                gap: 40vw;
+                                            }
+                                            }
+
+                                            @media only screen and (max-width: 1121px) {
+                                                .footer_container {
+                                                    gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                                }
+                                                
+                                                .description_container {
+                                                    padding-left: calc(10px + 10 * ((100vw - 320px) / 920));
+                                                    gap: 5vw;
+                                                    padding-right: calc( 15px + 45 * ((100vw - 320px) / 920));
+                                                }
+                                            
+                                                .footer_left_link {
+                                                    font-size: 1vw;
+                                                }
+                
+                                                .footer_right_text {
+                                                    font-size: 1.1vw;
+                                                }
+                
+                                                .container {
+                                                    width: calc(100%-80px);
+                                                }
+    
+                                                .header_container {
+                                                    gap: 40vw;
+                                                }
+
+                                                .submission_container {
+                                                    gap: 15vw;
+                                                }
+                                                }
+
+                                                @media only screen and (max-width: 1121px) {
+                                                    .footer_container {
+                                                        gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                                    }
+                                                    
+                                                    .description_container {
+                                                        padding-left: calc(10px + 10 * ((100vw - 320px) / 920));
+                                                        gap: 5vw;
+                                                        padding-right: calc( 15px + 45 * ((100vw - 320px) / 920));
+                                                    }
+                                                
+                                                    .footer_left_link {
+                                                        font-size: 1vw;
+                                                    }
+                    
+                                                    .footer_right_text {
+                                                        font-size: 1.1vw;
+                                                    }
+                    
+                                                    .container {
+                                                        width: calc(100%-80px);
+                                                    }
+        
+                                                    .header_container {
+                                                        gap: 40vw;
+                                                    }
+    
+                                                    .submission_container {
+                                                        gap: 10vw;
+                                                    }
+                                                    }
+
+                                                    
+                                                @media only screen and (max-width: 1005px) {
+                                                    .footer_container {
+                                                        gap: calc(90px + 20 * ((100vw - 1300px) / 100));
+                                                    }
+                                                    
+                                                    .description_container {
+                                                        padding-left: calc(10px + 10 * ((100vw - 320px) / 920));
+                                                        gap: 5vw;
+                                                        padding-right: calc( 15px + 45 * ((100vw - 320px) / 920));
+                                                    }
+                                                
+                                                    .footer_left_link {
+                                                        font-size: 1vw;
+                                                    }
+                    
+                                                    .footer_right_text {
+                                                        font-size: 1.1vw;
+                                                    }
+                    
+                                                    .container {
+                                                        width: calc(100%-80px);
+                                                    }
+        
+                                                    .header_container {
+                                                        gap: 40vw;
+                                                    }
+    
+                                                    .submission_container {
+                                                        gap: 10vw;
+                                                    }
+
+                                                    .description_right_img {
+                                                        width: 45vw;
+                                                        height: 50vh;
+                                                    }
+                                                    }
+
+                                                    @media only screen and (max-width: 915px) {
+
+                                                        .submission_title {
+                                                            font-size: 3.3vw;
+                                                        }
+                                                    }
+
+                                                    @media only screen and (max-width: 897px) {
+                                                        .header_container {
+                                                            gap: 35vw;
+                                                        }
+                                                        .description_right_img {
+                                                            width: 40vw;
+                                                            height: 50vh;
+                                                        }
+
+                                                        .footer_container{
+                                                            gap: 4vw;
+                                                        }
+                                                    }
+
+
+                                                    @media only screen and (max-width: 876px) {
+                                                        .footer_container{
+                                                            gap: 5vw;
+                                                        }
+
+                                                        .submission_img {
+                                                            width: 45vw;
+                                                            height: 45vh;
+                                                        }
+
+                                                        .footer_left {
+                                                            flex-direction: column;
+                                                        }
+
+                                                        .footer_right_bottom {
+                                                            padding-bottom: 85px;
+                                                        }
+
+                                                        .footer_left_link {
+                                                            font-size: 1.2vw;
+                                                        }
+                        
+                                                        .footer_right_text {
+                                                            font-size: 1.2vw;
+                                                        }
+                                                        
+                                                        .submission_title {
+                                                            font-size: 3.5vw;
+                                                        }
+                                            
+                                                        .submission_subtitle {
+                                                            font-size: 1.3vw;
+                                                        }
+                                                    }
+
+                                                    @media only screen and (max-width: 822px) {
+                                                        .description_right_img {
+                                                            width: 40vw;
+                                                            height: 45vh;
+                                                        }
+                                                     .footer_container {
+                                                        padding-left: calc(15px + 45 * ((100vw - 320px) / 505));
+                                                        padding-right: calc(15px + 45 * ((100vw - 320px) / 505));
+                                                        gap: 7vw;
+                                                     }
+
+                                                     .footer_left_links {
+                                                        gap: 1vw;
+                                                     }
+                                                        
+                                                    }
+
+                                                    @media only screen and (max-width: 810px) {
+                                                        .header_container {
+                                                            gap: 30vw;
+                                                        }
+                                                        
+                                                        .description_right_img {
+                                                            width: 35vw;
+                                                            height: 45vh;
+                                                        }
+                                                    }
+
+                                                    @media only screen and (max-width: 738px) {
+
+                                                        .header_container {
+                                                            gap: 25vw;
+                                                        }
+
+                                                      .description_container {
+                                                        flex-direction: column-reverse;
+                                                        align-items: center;
+                                                        column-gap: 0px;
+                                                      }
+
+                                                      .description_right_img {
+                                                        width: calc(312px + 307 * ((100vw - 320px) / 1120));
+                                                        height: calc(210px + 210 * ((100vw - 320px) / 1120));
+                                                      }
+
+                                                      .description_left {
+                                                        align-items: center;
+                                                        text-align: center;
+                                                        flex: 0;
+                                                        padding-top: 0;
+                                                      }
+
+                                                      .description_right {
+                                                        flex: 0;
+                                                      }
+
+                                                      .submission_container {
+                                                        flex-direction: column;
+                                                        align-items: center;
+                                                        column-gap: 0;
+                                                      }
+
+                                                      .submission_left {
+                                                        flex: 0;
+                                                      }
+
+                                                      .submission_title {
+                                                        font-size: calc(32px + 22 * ((100vw - 320px) / 1120));
+                                                      }
+
+                                                      .submission_subtitle {
+                                                        font-size: calc(14px + 2 * ((100vw - 320px) / 1120));
+                                                      }
+
+                                                      .submission_right {
+                                                        padding-top: 0;
+                                                        flex: 0;
+                                                        padding-bottom: 157px;
+                                                      }
+
+                                                      .submission_img {
+                                                        width: calc(312px + 307 * ((100vw - 320px) / 1120));
+                                                        height: calc(210px + 210 * ((100vw - 320px) / 1120));
+                                                      }
+                                                    }
+
+                                                    @media only screen and (max-width: 678px) {
+
+                                                        .header_container {
+                                                            gap: 20vw;
+                                                        }
+                                                    }
+
+                                                    @media only screen and (max-width: 627px) {
+
+                                                        .header_container {
+                                                            gap: 15vw;
+                                                        }
+
+                                                        .submission_right {
+                                                            
+                                                            padding-bottom: 137px;
+                                                          }
+                                                    }
+
+                                                    @media only screen and (max-width: 627px) {
+
+                                                        .header_container {
+                                                            gap: 10vw;
+                                                        }
+                                                    }
+
+                                                    @media only screen and (max-width: 555px) {
+
+                                                       
+
+                                                        .inputfield_content {
+                                                            align-items: center; /* Выравнивание элементов по центру */
+                                                            text-align: center;  /* Выравнивание текста */
+                                                            justify-content: center;
+                                                        }
+                                                    
+                                                        .inputfield_bottom {
+                                                            flex-direction: column; /* Расположение элементов по вертикали */
+                                                            gap: 32px; /* Уменьшение расстояния между элементами */
+                                                            width: 100%; /* Растягиваем на ширину */
+                                                            align-items: center;
+                                                        }
+                                                    
+                                                        .inputfield_input {
+                                                            width: 100%; /* Растягиваем поле ввода на всю ширину контейнера */
+                                                            max-width: 400px; /* Ограничиваем максимальную ширину */
+                                                        }
+                                                    
+                                                        .inputfield_button {
+                                                            width: 100%; /* Кнопка занимает всю ширину */
+                                                            max-width: 200px; /* Ограничиваем максимальную ширину */  
+                                                        }
+
+                                                        .footer_container {
+                                                            flex-direction: column;
+                                                            align-items: center;
+                                                            justify-content: center;
+                                                        }
+                                                        
+                                                        .footer_left_link {
+                                                            font-size: 14px;
+                                                        }
+
+                                                        .footer_left {
+                                                           padding-bottom: 0;
+                                                           flex-direction: row;
+                                                        }
+
+                                                        .footer_right {
+                                                            justify-content: center;
+                                                        }
+                                                        .footer_right_text {
+                                                            font-size: 14px;
+                                                            text-align: center;
+                                                        }
+
+                                                        .footer_right_bottom {
+                                                            text-align: center;
+                                                            padding-bottom: 32px;
+                                                        }
+                                                    }
+                                                    
+
+                                                    @media only screen and (max-width: 545px) {
+
+                                                        .header_nav_link {
+                                                            display: none;
+                                                        }
+
+                                                        .header_button {
+                                                            display: block;
+                                                        }
+
+                                                        .header_container {
+                                                            gap: calc(50px + 42 * ((100vw - 320px) / 225));
+                                                            padding-left: 24px;
+                                                            padding-right: 24px;
+                                                        }
+
+                                                        .description_container {
+                                                            padding-left: 24px;
+                                                            padding-right: 24px;
+                                                        }
+
+                                                        .howitworks_container {
+                                                            padding-left: 24px;
+                                                            padding-right: 24px;
+                                                        }
+
+                                                        .howitworks_buttom {
+                                                            flex-direction: column;
+                                                        }
+
+                                                        .inputfield_container {
+                                                            padding-left: 24px;
+                                                            padding-right: 24px;
+                                                        }
+
+                                                        .submission_container {
+                                                            padding-left: 24px;
+                                                            padding-right: 24px;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                            
+                                                        }
+
+                                                        .submission_right {
+                                                            padding-bottom: 64px;
+                                                        }
+
+                                                        .footer_container {
+                                                            flex-direction: column;
+                                                            align-items: flex-start;
+                                                            gap: 20px;
+                                                        }
+                                                        
+                                                        .footer_left {
+                                                            flex-direction: column;
+                                                            align-items: flex-start;
+                                                           
+                                                            padding-bottom: 40px;
+                                                        }
+                                                        
+                                                        .footer_left_links {
+                                                            flex-direction: column;
+                                                            align-items: flex-start;
+                                                            gap: 15px;
+                                                        }
+                                                        
+                                                        .footer_left_icons {
+                                                            flex-direction: column;
+                                                            align-items: flex-start;
+                                                           
+                                                        }
+                                                        
+                                                        .footer_right {
+                                                            align-items: center;
+                                                            
+                                                        }
+                                                        
+                                                        .footer_right_text  {
+                                                           text-align: left;
+                                                            
+                                                        }
+
+                                                        .footer_right_bottom {
+                                                            text-align: left;
+                                                            width: 100%;
+                                                        }
+                                                    }
+
+                                               

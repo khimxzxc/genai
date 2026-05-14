@@ -1,0 +1,78 @@
+version: "2"
+type: frontend
+tech_stack:
+  - javascript
+  - react
+  - vite
+  - tailwindcss
+  - supabase
+routes:
+  - path: /login
+    file: src/pages/LoginPage.jsx
+    auth_required: false
+    description: User login page
+  - path: /register
+    file: src/pages/RegisterPage.jsx
+    auth_required: false
+    description: User registration page
+  - path: /teacher/dashboard
+    file: src/pages/TeacherDashboardPage.jsx
+    auth_required: true
+    description: Dashboard for teachers to manage projects
+  - path: /student/dashboard
+    file: src/pages/StudentDashboardPage.jsx
+    auth_required: true
+    description: Dashboard for students to see their status
+  - path: /upload
+    file: src/pages/UploadPage.jsx
+    auth_required: true
+    description: Page for students to upload their HTML/CSS projects
+  - path: /result
+    file: src/pages/ResultPage.jsx
+    auth_required: true
+    description: Page showing AI evaluation results
+  - path: /submissions
+    file: src/pages/SubmissionsPage.jsx
+    auth_required: true
+    description: Page showing submission history
+features:
+  - name: User Authentication
+    description: Login and Registration for students and teachers
+    files:
+      - src/pages/LoginPage.jsx
+      - src/pages/RegisterPage.jsx
+      - src/hooks/useAuth.js
+    entry_route: /login
+    user_interactions:
+      - Fill email and password
+      - Click login/register button
+    api_calls:
+      - method: POST
+        endpoint: supabase.auth
+    auth_required: false
+  - name: Project Upload
+    description: Students can upload project folders
+    files:
+      - src/pages/UploadPage.jsx
+    entry_route: /upload
+    user_interactions:
+      - Select project folder
+      - Fill project title
+      - Click submit
+    api_calls:
+      - method: POST
+        endpoint: /api/evaluate
+    auth_required: true
+  - name: Teacher Management
+    description: Teachers can view all student submissions
+    files:
+      - src/pages/TeacherDashboardPage.jsx
+    entry_route: /teacher/dashboard
+    user_interactions:
+      - View list of submissions
+      - Click on submission to see details
+    api_calls:
+      - method: GET
+        endpoint: /api/submissions
+    auth_required: true
+known_limitations: []

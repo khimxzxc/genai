@@ -1,0 +1,14 @@
+node_modules/
+.env
+.DS_Store
+.agents/
+.vscode/
+diplomRA.docx
+*.zip
+*.log
+backend/node_modules/
+frontend/node_modules/
+backend/.env
+frontend/.env
+dist/
+build/

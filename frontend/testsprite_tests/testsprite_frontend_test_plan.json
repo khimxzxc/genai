@@ -1,0 +1,742 @@
+[
+  {
+    "id": "TC001",
+    "title": "Redirect unauthenticated visitors to login and return after sign in",
+    "description": "An unauthenticated visitor trying to access a protected page is redirected to login and can return to the intended protected page after authenticating.",
+    "category": "Authentication and Role-Based Routing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /student/dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login page is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student dashboard is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Student signs in and reaches the student dashboard",
+    "description": "This verifies that a student can log in and land on the correct dashboard after authentication.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student dashboard is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Teacher signs in and reaches the teacher dashboard",
+    "description": "This verifies that a teacher can log in and land on the correct dashboard after authentication.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the teacher dashboard is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Upload a valid HTML and CSS project and open the result",
+    "description": "A student can submit a valid project package and reach the evaluation result page with scores and feedback.",
+    "category": "Authentication and Role-Based Routing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the upload page"
+      },
+      {
+        "type": "action",
+        "description": "Upload a valid HTML and CSS project folder"
+      },
+      {
+        "type": "action",
+        "description": "Submit the project for evaluation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the evaluation result page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify scores and feedback are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Protected student pages redirect unauthenticated visitors to login",
+    "description": "This verifies that an unauthenticated visitor cannot open protected student pages and is redirected to the login page.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /student/dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Block student access to teacher dashboard",
+    "description": "A student who logs in can access student areas but is prevented from viewing the teacher dashboard.",
+    "category": "Authentication and Role-Based Routing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the teacher dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the teacher dashboard is not displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an access restriction view or redirect is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Student can upload a valid project and view the evaluation result",
+    "description": "This verifies that a student can submit a valid HTML/CSS project folder and reach the evaluation result with scores and feedback.",
+    "category": "Project Upload",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "action",
+        "description": "Click the project upload navigation"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid HTML/CSS project folder"
+      },
+      {
+        "type": "action",
+        "description": "Submit the upload"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the evaluation result is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify score breakdown and feedback are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "New student account can be created and routed correctly",
+    "description": "This verifies that a new student can register with role selection and reach the student dashboard after signup.",
+    "category": "Authentication",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Choose the student role"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the full name field with Test Student"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with a unique valid email address"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with a valid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student dashboard is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Review AI evaluation scores and feedback",
+    "description": "A student can open the AI evaluation result page and see the overall score, section scores, feedback, and improvement recommendations for a submitted project.",
+    "category": "AI Evaluation Result",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the AI evaluation result page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the overall score and section scores are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify detailed feedback and improvement recommendations are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "View teacher classroom and student overview",
+    "description": "A teacher can open the teacher dashboard and see classroom and student performance overview information.",
+    "category": "Teacher Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the teacher dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify classroom overview metrics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify student performance information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Student can open submission history from the dashboard",
+    "description": "This verifies that a student can navigate from the dashboard to submission history and see past submission records.",
+    "category": "Student Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "action",
+        "description": "Click the submission history navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the submission history page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify past submission records are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Compare current and previous evaluation attempts",
+    "description": "A student can review the result page and compare the current evaluation with a previous attempt through the available score breakdown and feedback sections.",
+    "category": "AI Evaluation Result",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the AI evaluation result page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the score breakdown is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify feedback for HTML, CSS, and UI/UX is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Student can open a prior submission result from history",
+    "description": "This verifies that a student can review a previous submission attempt and open its result details from submission history.",
+    "category": "Student Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "action",
+        "description": "Click the submission history navigation"
+      },
+      {
+        "type": "action",
+        "description": "Open a prior submission record"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the submission result details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify evaluation feedback for the selected attempt is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Teacher can review classroom metrics and a student summary",
+    "description": "This verifies that a teacher can view classroom performance information and drill into an individual student summary.",
+    "category": "Teacher Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "action",
+        "description": "View the classroom overview"
+      },
+      {
+        "type": "action",
+        "description": "Open an individual student summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify classroom performance metrics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student summary is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Open a past submission result from history",
+    "description": "A student can select a previous submission from history and open its evaluation result details.",
+    "category": "Submission History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the submission history page"
+      },
+      {
+        "type": "action",
+        "description": "Select a previous submission"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected submission result details are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Review a class and student performance metrics",
+    "description": "A teacher can select a class from the dashboard and review the associated student performance metrics.",
+    "category": "Teacher Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the teacher dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Select a class"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify class-specific student performance metrics are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "Compare older and newer submissions",
+    "description": "A student can review multiple attempts in submission history and compare how their evaluation outcomes changed over time.",
+    "category": "Submission History",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the submission history page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple submission attempts are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify older and newer evaluation outcomes can be compared"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Open an individual student summary from the teacher dashboard",
+    "description": "A teacher can drill into a student summary from the dashboard and review that student's submission progress.",
+    "category": "Teacher Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the teacher dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Open a student summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the student's submission progress is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Reject an invalid project package before evaluation",
+    "description": "A student can try to upload an invalid project package and receive validation feedback without generating a result.",
+    "category": "Authentication and Role-Based Routing",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the upload page"
+      },
+      {
+        "type": "action",
+        "description": "Upload an invalid project package"
+      },
+      {
+        "type": "action",
+        "description": "Submit the project for evaluation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no evaluation result is generated"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC020",
+    "title": "Student upload rejects an invalid project package",
+    "description": "This verifies that a student receives validation feedback when uploading a project that does not contain the expected HTML/CSS content.",
+    "category": "Project Upload",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form"
+      },
+      {
+        "type": "action",
+        "description": "Click the project upload navigation"
+      },
+      {
+        "type": "action",
+        "description": "Select files that do not include the expected HTML/CSS content"
+      },
+      {
+        "type": "action",
+        "description": "Submit the upload"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify upload validation feedback is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no evaluation result is displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]

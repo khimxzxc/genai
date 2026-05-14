@@ -1,0 +1,13 @@
+{
+  "scale": {
+    "total": 100,
+    "html": 30,
+    "css": 30,
+    "ui": 40
+  },
+  "thresholds": {
+    "excellent": 85,
+    "good": 70,
+    "satisfactory": 50
+  }
+}

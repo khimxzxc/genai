@@ -1,0 +1,62 @@
+[
+  {
+    "id": "H1.1",
+    "subcriterion": "Семантикалық тегтер",
+    "rule": "Page MUST use semantic HTML5 tags: <header>, <nav>, <main>, <footer>, <section>, <article>, <aside> instead of generic <div> wrappers.",
+    "maxPoints": 8,
+    "keyword": "semantic",
+    "levels": {
+      "high": "7–8: HTML коды толық семантикалық. Барлық блоктар дұрыс тегтермен жазылған.",
+      "mid": "4–6: Базалық семантикалық тегтер бар, бірақ маңызды блоктарда <div> тегінің көптеп жазылуы.",
+      "low": "0–3: Толық <div> супы. Семантикалық тегтер мүлдем қолданылмаған."
+    }
+  },
+  {
+    "id": "H1.2",
+    "subcriterion": "Қолжетімділік (Accessibility — WCAG 2.1)",
+    "rule": "Every <img> MUST have a non-empty alt attribute. Every <input> must have a <label>. Heading hierarchy must be sequential (h1→h2→h3).",
+    "maxPoints": 8,
+    "keyword": "alt",
+    "levels": {
+      "high": "7–8: Барлық img alt атрибуты бар. Иерархия сақталған. aria-label қолданылған.",
+      "mid": "4–6: Иерархия бар, бірақ кейбір жерлерде бұзылған. alt кейбір суреттерде ғана.",
+      "low": "0–3: Иерархия мүлдем жоқ. alt, label, aria-* атрибуттары жазылмаған."
+    }
+  },
+  {
+    "id": "H1.3",
+    "subcriterion": "Валидтілік және W3C стандарты",
+    "rule": "Every page MUST have <!DOCTYPE html>, <html lang>, <meta charset>, <meta viewport>, <title>. No unclosed tags. No inline styles.",
+    "maxPoints": 6,
+    "keyword": "doctype",
+    "levels": {
+      "high": "5–6: W3C стандартына толық сай. Inline стильдер жоқ. Тегтер дұрыс жабылған.",
+      "mid": "3–4: 2–3 жерде семантикалық қателіктер бар. Кейбір жерде inline стильдер.",
+      "low": "0–2: Парные тегтер жабылмаған. Inline стильдер шектен тыс көп."
+    }
+  },
+  {
+    "id": "H1.4",
+    "subcriterion": "Мета-тегтер және SEO негіздері",
+    "rule": "<meta charset='UTF-8'>, <meta name='viewport'>, <title>, <meta name='description'> are REQUIRED.",
+    "maxPoints": 4,
+    "keyword": "meta",
+    "levels": {
+      "high": "4: Барлық мета-тегтер дұрыс жазылған.",
+      "mid": "2–3: Негізгі мета-тегтер бар, бірақ description немесе viewport жетіспейді.",
+      "low": "0–1: Мета-тегтер мүлдем жоқ немесе қате жазылған."
+    }
+  },
+  {
+    "id": "H1.5",
+    "subcriterion": "Кодтың тазалығы және оқылымдылығы",
+    "rule": "Code must have proper indentation (2 or 4 spaces). Code must be readable and consistently formatted.",
+    "maxPoints": 4,
+    "keyword": "indent",
+    "levels": {
+      "high": "4: Код таза, шегіністер сақталған.",
+      "mid": "2–3: Код оқылымды, бірақ шегіністер бұзылған.",
+      "low": "0–1: Код хаотичный, шегіністер жоқ."
+    }
+  }
+]

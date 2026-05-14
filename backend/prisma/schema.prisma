@@ -1,0 +1,275 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── ENUM ─────────────────────────────────────────────────
+
+enum Role {
+  student
+  teacher
+}
+
+enum SubmissionStatus {
+  pending
+  processing
+  done
+  error
+}
+
+enum FileType {
+  html
+  css
+}
+
+enum FeedbackCategory {
+  HTML
+  CSS
+  UI
+}
+
+enum Severity {
+  critical
+  warning
+  info
+}
+
+enum ViolationType {
+  W3C
+  WCAG
+}
+
+// ─── MODELS ───────────────────────────────────────────────
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  fullName     String   @map("full_name")
+  role         Role     @default(student)
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  studentProfile StudentProfile?
+  submissions    Submission[]
+  assignments    Assignment[]    // преподаватель создаёт задания
+  sessions       Session[]
+  classrooms     Classroom[]     // классы, созданные учителем
+  classroomStudents ClassroomStudent[] // классы, в которых состоит студент
+
+  @@map("users")
+}
+
+model StudentProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  groupName   String?  @map("group_name")
+  course      Int?
+  speciality  String?
+  studentCode String?  @unique @map("student_code")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("student_profiles")
+}
+
+model Classroom {
+  id                     String             @id @default(uuid())
+  name                   String             // "Веб дизайн ИС-21"
+  description            String?
+  teacherId              String             @map("teacher_id")
+  inviteCode             String             @unique @map("invite_code")
+  inviteCodeExpiresAt    DateTime?          @map("invite_code_expires_at")
+  createdAt              DateTime           @default(now()) @map("created_at")
+  updatedAt              DateTime           @updatedAt @map("updated_at")
+
+  teacher                User               @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  students               ClassroomStudent[]
+  submissions            Submission[]
+  assignments            Assignment[]
+
+  @@unique([teacherId, name])
+  @@map("classrooms")
+}
+
+model ClassroomStudent {
+  id           String   @id @default(uuid())
+  classroomId  String   @map("classroom_id")
+  studentId    String   @map("student_id")
+  joinedAt     DateTime @default(now()) @map("joined_at")
+
+  classroom    Classroom @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  student      User      @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([classroomId, studentId])
+  @@map("classroom_students")
+}
+
+model Assignment {
+  id           String    @id @default(uuid())
+  teacherId    String    @map("teacher_id")
+  classroomId  String?   @map("classroom_id")
+  title        String
+  description  String?
+  requirements String?
+  maxAttempts  Int       @default(3) @map("max_attempts")
+  deadline     DateTime?
+  isActive     Boolean   @default(true) @map("is_active")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  teacher     User         @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  classroom   Classroom?   @relation(fields: [classroomId], references: [id], onDelete: SetNull)
+  submissions Submission[]
+
+  @@map("assignments")
+}
+
+model Submission {
+  id           String           @id @default(uuid())
+  studentId    String           @map("student_id")
+  classroomId  String?          @map("classroom_id")
+  assignmentId String?          @map("assignment_id")
+  title        String
+  attempt      Int              @default(1)
+  status       SubmissionStatus @default(pending)
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+
+  student    User        @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  classroom  Classroom?  @relation(fields: [classroomId], references: [id], onDelete: SetNull)
+  assignment Assignment? @relation(fields: [assignmentId], references: [id], onDelete: SetNull)
+  files      SubmissionFile[]
+  evaluation Evaluation?
+
+  @@map("submissions")
+}
+
+model SubmissionFile {
+  id           String   @id @default(uuid())
+  submissionId String   @map("submission_id")
+  fileName     String   @map("file_name")
+  fileType     FileType @map("file_type")
+  fileSize     Int      @map("file_size")
+  filePath     String   @map("file_path")
+  content      String
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+
+  @@map("submission_files")
+}
+
+model Evaluation {
+  id             String   @id @default(uuid())
+  submissionId   String   @unique @map("submission_id")
+  totalScore     Int      @map("total_score")
+  htmlScore      Int      @map("html_score")
+  cssScore       Int      @map("css_score")
+  uiScore        Int      @map("ui_score")
+  grade          String
+  summary        String?
+  topPriority    String?  @map("top_priority")
+  modelUsed      String   @default("meta-llama/llama-4-scout-17b-16e-instruct") @map("model_used")
+  analysisTimeMs Int?     @map("analysis_time_ms")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  // Новые поля для Classroom MVP (JSON)
+  scoreJustifications          Json?    @map("score_justifications")
+  learningPathRecommendations  Json?    @map("learning_path_recommendations")
+  nextAttemptSuggestion        Json?    @map("next_attempt_suggestion")
+
+  submission     Submission       @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  htmlRules      HtmlRuleResult[]
+  cssRules       CssRuleResult[]
+  feedbackItems  AiFeedbackItem[]
+  w3cViolations  W3cViolation[]
+
+  @@map("evaluations")
+}
+
+model HtmlRuleResult {
+  id           String   @id @default(uuid())
+  evaluationId String   @map("evaluation_id")
+  ruleCode     String   @map("rule_code")      // H1, H2 ... H13
+  ruleName     String   @map("rule_name")
+  standardRef  String   @map("standard_ref")   // W3C HTML5 §8.1.1
+  maxPoints    Int      @map("max_points")
+  earnedPoints Int      @map("earned_points")
+  passed       Boolean
+  detail       String?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+
+  @@map("html_rule_results")
+}
+
+model CssRuleResult {
+  id           String   @id @default(uuid())
+  evaluationId String   @map("evaluation_id")
+  ruleCode     String   @map("rule_code")      // C1, C2 ... R5
+  ruleName     String   @map("rule_name")
+  standardRef  String   @map("standard_ref")
+  maxPoints    Int      @map("max_points")
+  earnedPoints Int      @map("earned_points")
+  passed       Boolean
+  metricCount  Int?     @map("metric_count")   // float_count, media_count
+  metricRatio  Float?   @map("metric_ratio")   // bem_ratio
+  detail       String?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+
+  @@map("css_rule_results")
+}
+
+model AiFeedbackItem {
+  id             String           @id @default(uuid())
+  evaluationId   String           @map("evaluation_id")
+  category       FeedbackCategory
+  location       String
+  issue          String
+  howToFix       String           @map("how_to_fix")
+  studyMaterials String[]         @map("study_materials")
+  severity       Severity         @default(warning)
+  createdAt      DateTime         @default(now()) @map("created_at")
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+
+  @@map("ai_feedback_items")
+}
+
+model W3cViolation {
+  id            String        @id @default(uuid())
+  evaluationId  String        @map("evaluation_id")
+  violationType ViolationType @map("violation_type")
+  standardRef   String        @map("standard_ref")
+  description   String
+  location      String?
+  severity      String
+  createdAt     DateTime      @default(now()) @map("created_at")
+
+  evaluation Evaluation @relation(fields: [evaluationId], references: [id], onDelete: Cascade)
+
+  @@map("w3c_violations")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  refreshToken String   @unique @map("refresh_token")
+  expiresAt    DateTime @map("expires_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}

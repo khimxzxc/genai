@@ -1,0 +1,19 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:4173",
+  "loginUser": "romirzzac@gmail.com",
+  "loginPassword": "asdasd.123",
+  "executionArgs": {
+    "projectName": "frontend",
+    "projectPath": "/Users/khim/Sabaq/diplom/testing1/frontend",
+    "testIds": [],
+    "additionalInstruction": "Verify login, navigation, and core features. Use Kazakh for any feedback if possible, although these are automated tests.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-rQL5o4YJ7c7jhbpW9P7hSCI3tt_o5WjA3urVvSbjLBsFzSwmKcIMFAXUgaQ7_p3KKXWtsqeEyQHfrcrtjwNxAGxwzENq3rx9eyJO5aptIPCxn_ISDQR9gw52mBNoIBO1a5o"
+    }
+  },
+  "serverPort": 61840
+}
