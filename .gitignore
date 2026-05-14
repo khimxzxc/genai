@@ -1,14 +1,48 @@
+# === Зависимости ===
 node_modules/
-.env
-.DS_Store
-.agents/
-.vscode/
-diplomRA.docx
-*.zip
-*.log
 backend/node_modules/
 frontend/node_modules/
+
+# === Переменные окружения (секреты) ===
+.env
 backend/.env
 frontend/.env
+
+# === Загруженные файлы студентов (runtime данные, не код) ===
+# Игнорируем всё внутри, но сохраняем .gitkeep для структуры
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/tmp_uploads/*
+!backend/tmp_uploads/.gitkeep
+
+# === Артефакты тестирования ===
+backend/testsprite_tests/
+frontend/testsprite_tests/
+
+# === Генерируемые файлы сборки ===
 dist/
 build/
+backend/dist/
+
+# === Отладочные и временные файлы ===
+backend/result.js
+*.log
+*.tmp
+
+# === macOS системные файлы ===
+.DS_Store
+**/.DS_Store
+
+# === IDE и редакторы ===
+.vscode/
+.idea/
+
+# === Агентские файлы ===
+.agents/
+
+# === Архивы ===
+*.zip
+*.tar.gz
+
+# === Дипломные черновики ===
+diplomRA.docx
