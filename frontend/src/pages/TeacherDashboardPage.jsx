@@ -3,12 +3,14 @@ import { api } from '../lib/api';
 import ClassroomCard from '../components/ClassroomCard';
 import StudentListTable from '../components/StudentListTable';
 import StudentSubmissionsModal from '../components/StudentSubmissionsModal';
+import ErrorStatsChart from '../components/Results/ErrorStatsChart';
 
 export default function TeacherDashboardPage() {
   const [classrooms, setClassrooms] = useState([]);
   const [selectedClassroom, setSelectedClassroom] = useState(null);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [students, setStudents] = useState([]);
+  const [errorStats, setErrorStats] = useState({ html: 0, css: 0, ui: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
@@ -50,9 +52,23 @@ export default function TeacherDashboardPage() {
     }
   };
 
+  // Загружаем статистику ошибок по категориям для диаграммы
+  const loadErrorStats = async (classroomId) => {
+    try {
+      const query = classroomId ? `?classroomId=${classroomId}` : '';
+      const data = await api.get(`/teacher/error-stats${query}`);
+      if (data && !data.error) {
+        setErrorStats({ html: data.html || 0, css: data.css || 0, ui: data.ui || 0 });
+      }
+    } catch (err) {
+      console.error('Error stats load error:', err);
+    }
+  };
+
   const handleSelectClassroom = (classroom) => {
     setSelectedClassroom(classroom);
     loadStudents(classroom.id);
+    loadErrorStats(classroom.id);
   };
 
   const handleCreateClassroom = async (e) => {
@@ -196,6 +212,11 @@ export default function TeacherDashboardPage() {
                   onStudentClick={(s) => setSelectedStudent(s)}
                   onRemoveStudent={handleRemoveStudent}
                 />
+              </div>
+
+              {/* Круговая диаграмма — статистика ошибок */}
+              <div className="mt-6">
+                <ErrorStatsChart stats={errorStats} />
               </div>
             </>
           ) : (

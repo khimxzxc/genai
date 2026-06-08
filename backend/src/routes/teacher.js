@@ -157,6 +157,38 @@ router.get('/statistics', async (req, res) => {
   }
 });
 
+// ─── GET /api/teacher/error-stats ─────────────────────────
+// Статистика типов ошибок по категориям (для круговой диаграммы)
+router.get('/error-stats', async (req, res) => {
+  try {
+    const { classroomId } = req.query;
+
+    // Считаем количество feedbackItems по категориям
+    const whereClause = {};
+    if (classroomId) {
+      // Если указан класс — фильтруем через evaluation → submission → classroomId
+      whereClause.evaluation = {
+        submission: { classroomId },
+      };
+    }
+
+    const [htmlCount, cssCount, uiCount] = await Promise.all([
+      prisma.aiFeedbackItem.count({ where: { ...whereClause, category: 'HTML' } }),
+      prisma.aiFeedbackItem.count({ where: { ...whereClause, category: 'CSS' } }),
+      prisma.aiFeedbackItem.count({ where: { ...whereClause, category: 'UI' } }),
+    ]);
+
+    res.json({
+      html: htmlCount,
+      css: cssCount,
+      ui: uiCount,
+      total: htmlCount + cssCount + uiCount,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ─── POST /api/teacher/assignments ────────────────────────
 // Создать задание
 router.post('/assignments', async (req, res) => {

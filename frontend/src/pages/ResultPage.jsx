@@ -82,47 +82,59 @@ export default function ResultPage() {
 
   /* ── Excel экспорт ────────────────────────────────── */
   const downloadExcel = () => {
-    const wb = XLSX.utils.book_new();
+    try {
+      if (!result || !result.scores) {
+        alert('Жүктеу үшін нәтижелер дайын емес');
+        return;
+      }
 
-    // Лист 1: сводка
-    const wsSummary = XLSX.utils.json_to_sheet([
-      { Критерий: 'Жалпы ұпай',     Балл: result.scores.total, Максимум: 100 },
-      { Критерий: 'HTML Құрылымы',   Балл: result.scores.html,  Максимум: 30  },
-      { Критерий: 'CSS Сапасы',      Балл: result.scores.css,   Максимум: 30  },
-      { Критерий: 'UI/UX Интерфейс', Балл: result.scores.ui,    Максимум: 40  },
-      { Критерий: 'Баға',            Балл: result.grade,         Максимум: '-' },
-    ]);
-    XLSX.utils.book_append_sheet(wb, wsSummary, 'Нәтиже');
+      const wb = XLSX.utils.book_new();
 
-    // Лист 2: фидбек
-    if (result.feedback?.length > 0) {
-      const wsFeedback = XLSX.utils.json_to_sheet(
-        result.feedback.map(f => ({
-          Категория: f.category,
-          Орын:      f.location,
-          Қате:      f.issue,
-          Жөндеу:    f.howToFix,
-        }))
-      );
-      XLSX.utils.book_append_sheet(wb, wsFeedback, 'Кері байланыс');
+      // Лист 1: сводка
+      const wsSummary = XLSX.utils.json_to_sheet([
+        { Критерий: 'Жалпы ұпай',     Балл: result.scores?.total || 0, Максимум: 100 },
+        { Критерий: 'HTML Құрылымы',   Балл: result.scores?.html || 0,  Максимум: 30  },
+        { Критерий: 'CSS Сапасы',      Балл: result.scores?.css || 0,   Максимум: 30  },
+        { Критерий: 'UI/UX Интерфейс', Балл: result.scores?.ui || 0,    Максимум: 40  },
+        { Критерий: 'Баға',            Балл: result.grade || '—',       Максимум: '-' },
+      ]);
+      XLSX.utils.book_append_sheet(wb, wsSummary, 'Нәтиже');
+
+      // Лист 2: фидбек
+      if (result.feedback?.length > 0) {
+        const wsFeedback = XLSX.utils.json_to_sheet(
+          result.feedback.map(f => ({
+            Категория: f.category || 'UI',
+            Орын:      f.location || 'unknown',
+            Қате:      f.issue || '',
+            Жөндеу:    f.howToFix || '',
+          }))
+        );
+        XLSX.utils.book_append_sheet(wb, wsFeedback, 'Кері байланыс');
+      }
+
+      // Лист 3: оқу жоспары
+      if (result.learningPathRecommendations?.length > 0) {
+        const wsPath = XLSX.utils.json_to_sheet(
+          result.learningPathRecommendations.map(r => ({
+            Тақырып:     r.topic || '',
+            Маңыздылығы: r.importance || '',
+            Себеп:       r.reason || '',
+            Уақыт:       r.estimatedTime || '',
+            Тапсырма:    r.practiceTask || '',
+          }))
+        );
+        XLSX.utils.book_append_sheet(wb, wsPath, 'Оқу жоспары');
+      }
+
+      XLSX.writeFile(wb, `CodeReview_${result.scores?.total || 0}_балл.xlsx`);
+    } catch (err) {
+      console.error('[Excel Export Error]', err);
+      alert('Excel жүктеу кезінде қате орын алды: ' + err.message);
     }
-
-    // Лист 3: оқу жоспары
-    if (result.learningPathRecommendations?.length > 0) {
-      const wsPath = XLSX.utils.json_to_sheet(
-        result.learningPathRecommendations.map(r => ({
-          Тақырып:     r.topic,
-          Маңыздылығы: r.importance,
-          Себеп:       r.reason,
-          Уақыт:       r.estimatedTime,
-          Тапсырма:    r.practiceTask,
-        }))
-      );
-      XLSX.utils.book_append_sheet(wb, wsPath, 'Оқу жоспары');
-    }
-
-    XLSX.writeFile(wb, 'CodeReview_Report.xlsx');
   };
+
+
 
   /* ── States ───────────────────────────────────────── */
   if (loading) return (
